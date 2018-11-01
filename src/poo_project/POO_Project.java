@@ -5,6 +5,8 @@
  */
 package poo_project;
 
+import Screens.Login;
+
 /**
  *
  * @author gusta
@@ -15,7 +17,8 @@ public class POO_Project {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       Login lg= new Login();
+       lg.setVisible(true);
     }
     
 }
