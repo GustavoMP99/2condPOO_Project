@@ -1,24 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poo_project;
 
+import Class.Administrator;
+import Class.Chef;
+import Class.Customer;
+import Class.Person;
+import Class.Seller;
 import Screens.Login;
+import java.util.ArrayList;
 
 /**
  *
  * @author gusta
  */
 public class POO_Project {
-
-    /**
-     * @param args the command line arguments
-     */
+    
+  public static ArrayList<Person> users;
+  
     public static void main(String[] args) {
-       Login lg= new Login();
+      users = new ArrayList<Person>();
+      loadInfo();
+        Login lg= new Login();
        lg.setVisible(true);
     }
     
+    public static void loadInfo(){
+         Administrator admin = new Administrator(2018, "1", "Nani");
+         Chef chef= new Chef(123, "1","Adolfo");
+         Seller seller= new Seller(321, "1","Hitler");
+         Customer customer= new Customer(111,"1","Gusi");
+         
+         users.add(admin);
+         users.add(chef);
+         users.add(seller);
+         users.add(customer);
+    }
+    
+     public static Person searchUser(int ID){
+        for(int x = 0; x < users.size(); x++){
+            if(users.get(x).getId()==ID)
+                return users.get(x);
+        }
+        return null;
+    }
 }

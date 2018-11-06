@@ -2,12 +2,12 @@ package Class;
 
 public class Administrator extends Person {
 
-    public Administrator(int id, String password) {
-        super(id,password);
+    public Administrator(int id, String password, String name) {
+        super(id,password, name);
     }
 
     @Override
-    protected String getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getType() {
+        return "Admi";
     }
 }

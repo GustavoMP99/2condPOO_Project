@@ -2,12 +2,12 @@ package Class;
 
 public class Seller extends Person {
 
-    public Seller(int id, String password) {
-        super(id,password);
+    public Seller(int id, String password, String name) {
+        super(id,password,name);
     }
 
     @Override
-    protected String getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getType() {
+        return "Seller";
     }
 }
