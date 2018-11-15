@@ -20,45 +20,49 @@ public class Login extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/Images/iconTwo.png")).getImage());
     }
 
-      public void logIn(){
+    public void logIn() {
         int ID = Integer.parseInt(textID.getText());
         String pass = textPass.getText();
         Person userTemp = POO_Project.searchUser(ID);
- 
-             if( !userTemp.getPassword().equals(pass) )
-           JOptionPane.showMessageDialog(null, "Invalid password, try again");
-        else if(userTemp.getId()== ID && userTemp.getPassword().equals(pass)){
-            String type = userTemp.getType();        
-            switch(type) {
-                case "Admi" :
-                    Admi adW = new Admi( (Administrator) userTemp);
-                    adW.setVisible(true);
-                    this.dispose();
-                    break;
-                    
-                case "Chef" :
-                    wChef wC = new wChef( (Chef) userTemp);
-                    wC.setVisible(true);
-                    this.dispose();
-                    break;
-                    
-               case "Seller" :
-                    wSeller wS = new wSeller( (Seller) userTemp);
-                    wS.setVisible(true);
-                    this.dispose();
-                    break;
-                    
-                case "Customer" :
-                    wCustomer wCC = new wCustomer( (Customer) userTemp);
-                    wCC.setVisible(true);
-                    this.dispose();
-                    break;
-        
-       }
-            
+        try {
+            if (userTemp.getId() == ID){
+                    if (userTemp.getPassword().equals(pass)) {
+                String type = userTemp.getType();
+                switch (type) {
+                    case "Admi":
+                        Admi adW = new Admi((Administrator) userTemp);
+                        adW.setVisible(true);
+                        this.dispose();
+                        break;
+
+                    case "Chef":
+                        wChef wC = new wChef((Chef) userTemp);
+                        wC.setVisible(true);
+                        this.dispose();
+                        break;
+
+                    case "Seller":
+                        wSeller wS = new wSeller((Seller) userTemp);
+                        wS.setVisible(true);
+                        this.dispose();
+                        break;
+
+                    case "Customer":
+                        wCustomer wCC = new wCustomer((Customer) userTemp);
+                        wCC.setVisible(true);
+                        this.dispose();
+                        break;
+                }
             }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Try again");
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, "Try again");
         }
-   
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

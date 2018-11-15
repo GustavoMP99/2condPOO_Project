@@ -1,6 +1,7 @@
 package poo_project;
 
 import Class.Administrator;
+import Class.Categories;
 import Class.Chef;
 import Class.Customer;
 import Class.Person;
@@ -15,9 +16,11 @@ import java.util.ArrayList;
 public class POO_Project {
     
   public static ArrayList<Person> users;
-  
+  public static ArrayList<Categories> listCategories;
+   
     public static void main(String[] args) {
       users = new ArrayList<Person>();
+      listCategories= new ArrayList<Categories>();
       loadInfo();
         Login lg= new Login();
        lg.setVisible(true);
@@ -42,4 +45,6 @@ public class POO_Project {
         }
         return null;
     }
+     
+      
 }
