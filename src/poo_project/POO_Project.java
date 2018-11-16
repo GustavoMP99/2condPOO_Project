@@ -46,5 +46,18 @@ public class POO_Project {
         return null;
     }
      
+      /**
+     * Search categorie
+     * @param name
+     * @return 
+     */
+    public static Categories searchCategorie(String name) {
+        for (int x = 0; x < listCategories.size(); x++) {
+            if (listCategories.get(x).getName().equals(name)) {
+                return listCategories.get(x);
+            }
+        }
+        return null;
+    }
       
 }

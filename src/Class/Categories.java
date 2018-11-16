@@ -10,9 +10,9 @@ public class Categories {
     private String name;
 
     public Categories(String name) {
-        this.listDish = null;
-        this.listDrink = null;
-        this.listIngredients = null;
+        this.listDish = new ArrayList<>();
+        this.listDrink = new ArrayList<>();
+        this.listIngredients = new ArrayList<>();
         this.name = name;
     }
 
@@ -35,6 +35,5 @@ public class Categories {
     public void setName(String name) {
         this.name = name;
     }
-    
     
 }

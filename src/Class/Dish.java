@@ -8,6 +8,14 @@ public class Dish extends Food {
         super(code,name,description,price,presentation,image);
         this.ingredients= ingredients;
     }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
     
     
 }
