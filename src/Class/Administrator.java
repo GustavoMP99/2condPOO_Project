@@ -73,6 +73,7 @@ public class Administrator extends Person {
         return null;
     }
     
+    
     /**
      * Add drinks to the categories
      * @param code
@@ -102,7 +103,7 @@ public class Administrator extends Person {
     }
     
     /**
-     * Add drinks to the categories
+     * Add extra ingredients to the categories
      * @param code
      * @param name
      * @param description
@@ -111,21 +112,27 @@ public class Administrator extends Person {
      * @param image
      * @param categorie 
      */
-    public void addDrink(int code, String name, String description, int price, String presentation, String image, String categorie) {
+    public void addIngredientExtra(int code, String name, String description, int price, String presentation, String image,String categorie) {
         Categories tempC = searchCategorie(categorie);
-        Drink newDrink = new Drink(code, name, description, price, presentation, image);
-        if (tempC.getListDrink()==null) {
-            tempC.getListDrink().add(newDrink);
+        Ingredients newIngredient = new Ingredients(code, name, description, price, presentation, image);
+        if (tempC.getListIngredients()==null) {
+            tempC.getListIngredients().add(newIngredient);
             JOptionPane.showMessageDialog(null, "It was created correctly");
             return;
         }
-        for (int x = 0; x < tempC.getListDrink().size(); x++) {
-            if (tempC.getListDrink().get(x).getCode() == code) {
+        for (int x = 0; x < tempC.getListIngredients().size(); x++) {
+            if (tempC.getListIngredients().get(x).getCode() == code) {
                 JOptionPane.showMessageDialog(null, "This code already exists");
                 return;
             }
         }
-        tempC.getListDrink().add(newDrink);
+        tempC.getListIngredients().add(newIngredient);
         JOptionPane.showMessageDialog(null, "It was created correctly");
+    }
+    
+    public void CBeditDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie){
+        Categories tempC=  searchCategorie(categorie);
+        Dish tempD= tempC.searchFood(code);
+        
     }
 }

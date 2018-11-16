@@ -1,6 +1,7 @@
 package Screens;
 
 import Class.Administrator;
+import Class.Categories;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -12,130 +13,140 @@ import static poo_project.POO_Project.listCategories;
  * @author Alvarado
  */
 public class Admi extends javax.swing.JFrame {
-Administrator admi;
-    
+
+    Administrator admi;
+
     public Admi(Administrator admi) {
-        this.admi=admi;
+        this.admi = admi;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/Images/iconTwo.png")).getImage());
-         
+
     }
-    
+
     /**
      * Open window Login
      */
-    public void Exit(){
-        Login lg= new Login();
+    public void Exit() {
+        Login lg = new Login();
         lg.setVisible(true);
         this.dispose();
     }
-    
+
     /**
-     * Open the search window
-     * Get image direction
+     * Open the search window Get image direction
      */
-    public void settingSearcher(){
-         File archivo;
-         int result;
-         Searcher Sch= new Searcher();
-         FileNameExtensionFilter format = new FileNameExtensionFilter("JPG, PNG y GIF","jpg","png");
-         Sch.search.setFileFilter(format);
-         result = Sch.search.showOpenDialog(null);
-         if (JFileChooser.APPROVE_OPTION== result){
-             archivo= Sch.search.getSelectedFile();
-             fileDish.setText(archivo.getAbsolutePath());
-           
-         }
-     }
-    
+    public void settingSearcher() {
+        File archivo;
+        int result;
+        Searcher Sch = new Searcher();
+        FileNameExtensionFilter format = new FileNameExtensionFilter("JPG, PNG y GIF", "jpg", "png");
+        Sch.search.setFileFilter(format);
+        result = Sch.search.showOpenDialog(null);
+        if (JFileChooser.APPROVE_OPTION == result) {
+            archivo = Sch.search.getSelectedFile();
+            fileDish.setText(archivo.getAbsolutePath());
+            fileDrink.setText(archivo.getAbsolutePath());
+            fileEI.setText(archivo.getAbsolutePath());
+
+        }
+    }
+
     /**
-     * 
+     *
      */
-    public void CreateCategories(){
-        String nameCat= nameCategorie.getText();
+    public void CreateCategories() {
+        String nameCat = nameCategorie.getText();
         admi.addCategories(nameCat);
         nameCategorie.setText("");
     }
-    
+
     /**
-     * 
+     *
      */
-     public void categoriesCB(){
+    public void categoriesCB() {
         CBdish.removeAllItems();
         CBdrink.removeAllItems();
         int i = 0;
         while (i < listCategories.size()) {
-                CBdish.addItem(listCategories.get(i).getName());
-                CBdrink.addItem(listCategories.get(i).getName());
-                CBextraIng.addItem(listCategories.get(i).getName());
-                i++;
+            CBdish.addItem(listCategories.get(i).getName());
+            CBdrink.addItem(listCategories.get(i).getName());
+            CBextraIng.addItem(listCategories.get(i).getName());
+            CBdish2.addItem(listCategories.get(i).getName());
+            i++;
         }
     }
-     
-     /**
-      * Create new dish
-      */
-     public void CreateDish(){
-         int code=(Integer)codeDish.getValue();
-         String name= nameDish.getText();
-         String ingredients= ingredientsDish.getText();
-         String description= descriptionDish.getText();
-         String presentation= presentationDish.getSelectedItem().toString();
-         String categories= CBdish.getSelectedItem().toString();
-         int price=(Integer)priceDish.getValue();
-         String file= fileDish.getText();
-                 
-         admi.addDish(code, name, description, price, presentation, file, ingredients, categories);
-         codeDish.setValue(0);
-         nameDish.setText("");
-         ingredientsDish.setText("");
-         descriptionDish.setText("");
-         priceDish.setValue(0);
-         fileDish.setText("");
-     }
-     
-     /**
-      * 
-      */
-     public void CreateDrink(){
-         int code=(Integer)codeDr.getValue();
-         String name= nameDr.getText();
-         String description= descriptionDr.getText();
-         String presentation= presentationDr.getSelectedItem().toString();
-         String categories= CBdrink.getSelectedItem().toString();
-         int price=(Integer)priceDr.getValue();
-         String file= fileDrink.getText();
-                 
-         admi.addDrink(code, name, description, price, presentation, file, categories);
-         codeDr.setValue(0);
-         nameDr.setText("");
-         descriptionDr.setText("");
-         priceDr.setValue(0);
-         fileDrink.setText("");
-     }
+
+    /**
+     * Create new dish
+     */
+    public void CreateDish() {
+        int code = (Integer) codeDish.getValue();
+        String name = nameDish.getText();
+        String ingredients = ingredientsDish.getText();
+        String description = descriptionDish.getText();
+        String presentation = presentationDish.getSelectedItem().toString();
+        String categories = CBdish.getSelectedItem().toString();
+        int price = (Integer) priceDish.getValue();
+        String file = fileDish.getText();
+
+        admi.addDish(code, name, description, price, presentation, file, ingredients, categories);
+        codeDish.setValue(0);
+        nameDish.setText("");
+        ingredientsDish.setText("");
+        descriptionDish.setText("");
+        priceDish.setValue(0);
+        fileDish.setText("");
+        fileDrink.setText("");
+        fileEI.setText("");
+    }
+
+    /**
+     *
+     */
+    public void CreateDrink() {
+        int code = (Integer) codeDr.getValue();
+        String name = nameDr.getText();
+        String description = descriptionDr.getText();
+        String presentation = presentationDr.getSelectedItem().toString();
+        String categories = CBdrink.getSelectedItem().toString();
+        int price = (Integer) priceDr.getValue();
+        String file = fileDrink.getText();
+
+        admi.addDrink(code, name, description, price, presentation, file, categories);
+        codeDr.setValue(0);
+        nameDr.setText("");
+        descriptionDr.setText("");
+        priceDr.setValue(0);
+        fileDish.setText("");
+        fileDrink.setText("");
+        fileEI.setText("");
+    }
+
+    /**
+     *
+     */
+    public void CreateIngredientExtra() {
+        int code = (Integer) codeEI.getValue();
+        String name = nameEI.getText();
+        String description = descriptionEI.getText();
+        String presentation = presentationEI.getText();
+        String categories = CBextraIng.getSelectedItem().toString();
+        int price = (Integer) priceEI.getValue();
+        String file = fileEI.getText();
+
+        admi.addIngredientExtra(code, name, description, price, presentation, file, categories);
+        codeEI.setValue(0);
+        nameEI.setText("");
+        descriptionEI.setText("");
+        priceEI.setValue(0);
+        fileDish.setText("");
+        fileDrink.setText("");
+        fileEI.setText("");
+    }
     
-      /**
-      * 
-      */
-     public void CreateIngredientExtra(){
-         int code=(Integer)codeEI.getValue();
-         String name= nameEI.getText();
-         String description= descriptionEI.getText();
-         String presentation= presentationEI.getText();
-         String categories= CBextraIng.getSelectedItem().toString();
-         int price=(Integer)priceEI.getValue();
-         String file= fileEI.getText();
-                 
-         admi.addDrink(code, name, description, price, presentation, file, categories);
-         codeEI.setValue(0);
-         nameEI.setText("");
-         descriptionEI.setText("");
-         priceEI.setValue(0);
-         fileEI.setText("");
-     }
-    
-     
+  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -167,6 +178,10 @@ Administrator admi;
         descriptionDish = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        CBdish2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         label = new javax.swing.JLabel();
@@ -437,6 +452,20 @@ Administrator admi;
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/efoodIcon2.png"))); // NOI18N
 
+        CBdish2.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        CBdish2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jComboBox2.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel39.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Categorie:");
+
+        jLabel40.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setText("Dishes:");
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -445,11 +474,27 @@ Administrator admi;
                 .addContainerGap(651, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel39)
+                .addGap(18, 18, 18)
+                .addComponent(CBdish2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(378, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBdish2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel40))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -871,7 +916,7 @@ Administrator admi;
                                 .addContainerGap())))
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addComponent(jLabel38)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(fileEI, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(213, 213, 213))))
         );
@@ -972,8 +1017,8 @@ Administrator admi;
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane6)
-                .addGap(198, 198, 198))
+                .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1180,11 +1225,11 @@ Administrator admi;
     }//GEN-LAST:event_selectImageDrinkActionPerformed
 
     private void CreateDish1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateDish1ActionPerformed
-       CreateDrink();
+        CreateDrink();
     }//GEN-LAST:event_CreateDish1ActionPerformed
 
     private void selectImageDrink1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageDrink1ActionPerformed
-        
+    settingSearcher();
     }//GEN-LAST:event_selectImageDrink1ActionPerformed
 
     private void CreateDish2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateDish2ActionPerformed
@@ -1194,6 +1239,7 @@ Administrator admi;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBdish;
+    private javax.swing.JComboBox<String> CBdish2;
     private javax.swing.JComboBox<String> CBdrink;
     private javax.swing.JComboBox<String> CBextraIng;
     private javax.swing.JButton CreateDish;
@@ -1211,6 +1257,7 @@ Administrator admi;
     private javax.swing.JTextField fileDrink;
     private javax.swing.JTextField fileEI;
     private javax.swing.JTextField ingredientsDish;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1243,7 +1290,9 @@ Administrator admi;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
