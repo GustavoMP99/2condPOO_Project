@@ -4,6 +4,7 @@ import Class.Administrator;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import static poo_project.POO_Project.listCategories;
 
@@ -54,7 +55,12 @@ Administrator admi;
      */
     public void CreateCategories(){
         String nameCat= nameCategorie.getText();
-        admi.addCategories(nameCat);
+        if (admi.addCategories(nameCat)) {
+             JOptionPane.showMessageDialog(null, "Created Correctly");
+         }
+         else{
+             JOptionPane.showMessageDialog(null, "That is already created");
+         }
         nameCategorie.setText("");
     }
     
@@ -86,7 +92,13 @@ Administrator admi;
          int price=(Integer)priceDish.getValue();
          String file= fileDish.getText();
                  
-         admi.addDish(code, name, description, price, presentation, file, ingredients, categories);
+         if (admi.addDish(code, name, description, price, presentation, file, ingredients, categories)) {
+             JOptionPane.showMessageDialog(null, "Created Correctly");
+         }
+         else{
+             JOptionPane.showMessageDialog(null, "That is already created");
+         }
+
          codeDish.setValue(0);
          nameDish.setText("");
          ingredientsDish.setText("");
@@ -107,7 +119,12 @@ Administrator admi;
          int price=(Integer)priceDr.getValue();
          String file= fileDrink.getText();
                  
-         admi.addDrink(code, name, description, price, presentation, file, categories);
+         if (admi.addDrink(code, name, description, price, presentation, file,categories)) {
+             JOptionPane.showMessageDialog(null, "Created Correctly");
+         }
+         else{
+             JOptionPane.showMessageDialog(null, "That is already created");
+         }
          codeDr.setValue(0);
          nameDr.setText("");
          descriptionDr.setText("");
