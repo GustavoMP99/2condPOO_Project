@@ -36,4 +36,12 @@ public class Categories {
         this.name = name;
     }
     
+    public Dish searchDish(int code){
+        for (int i = 0; i < listDish.size(); i++) {
+            if(listDish.get(i).getCode()==code)
+                return listDish.get(i);
+            }
+        return null;
+    }
+    
 }
