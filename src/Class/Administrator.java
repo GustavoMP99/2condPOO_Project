@@ -138,7 +138,7 @@ public class Administrator extends Person {
 
     }
     
-    public void CBeditDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie){
+    public void EditDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie){
         Categories tempC=  searchCategorie(categorie);
         Dish tempD= tempC.searchDish(code);
         tempD.setDescription(description);
@@ -149,7 +149,23 @@ public class Administrator extends Person {
         tempD.setName(name);
     }
     
-    public void DeleteDish(Dish dish, Categories categorie){
-        categorie.getListDish().remove(dish);
+    public void EditDrink(int code, String name, String description, int price, String presentation, String image, String categorie){
+        Categories tempC=  searchCategorie(categorie);
+        Drink tempD= tempC.searchDrink(code);
+        tempD.setDescription(description);
+        tempD.setImage(image);
+        tempD.setPresentation(presentation);
+        tempD.setPrice(price);
+        tempD.setName(name);
+    }
+    
+     public void EditIngredient(int code, String name, String description, int price, String presentation, String image, String categorie){
+        Categories tempC=  searchCategorie(categorie);
+        Ingredients tempE= tempC.searchIngredient(code);
+        tempE.setDescription(description);
+        tempE.setImage(image);
+        tempE.setPresentation(presentation);
+        tempE.setPrice(price);
+        tempE.setName(name);
     }
 }
