@@ -16,22 +16,23 @@ public class Administrator extends Person {
 
     /**
      * Create new categories
-     * @param name 
+     *
+     * @param name
      */
-    public void addCategories(String name) {
+    public boolean addCategories(String name) {
         for (int x = 0; x < listCategories.size(); x++) {
             if (listCategories.get(x).getName().equals(name)) {
-                JOptionPane.showMessageDialog(null, "This category already exists");
-                return;
+                return false;
             }
         }
         Categories cat = new Categories(name);
         listCategories.add(cat);
-        JOptionPane.showMessageDialog(null, "It was created correctly");
+        return true;
     }
 
     /**
      * Add dishes to the categories
+     *
      * @param code
      * @param name
      * @param description
@@ -39,30 +40,23 @@ public class Administrator extends Person {
      * @param presentation
      * @param image
      * @param ingredients
-     * @param categorie 
+     * @param categorie
      */
-    public void addDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie) {
+    public boolean addDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie) {
         Categories tempC = searchCategorie(categorie);
-        Dish newDish = new Dish(code, name, description, price, presentation, image, ingredients);
-        if (tempC.getListDish()==null) {
+        if (verFood(code)) {
+            Dish newDish = new Dish(code, name, description, price, presentation, image, ingredients);
             tempC.getListDish().add(newDish);
-            JOptionPane.showMessageDialog(null, "It was created correctly");
-            return;
+            return true;
         }
-        for (int x = 0; x < tempC.getListDish().size(); x++) {
-            if (tempC.getListDish().get(x).getCode() == code) {
-                JOptionPane.showMessageDialog(null, "This code already exists");
-                return;
-            }
-        }
-        tempC.getListDish().add(newDish);
-        JOptionPane.showMessageDialog(null, "It was created correctly");
+        return false;
     }
 
     /**
      * Search categorie
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static Categories searchCategorie(String name) {
         for (int x = 0; x < listCategories.size(); x++) {
@@ -72,60 +66,46 @@ public class Administrator extends Person {
         }
         return null;
     }
-    
+
     /**
      * Add drinks to the categories
+     *
      * @param code
      * @param name
      * @param description
      * @param price
      * @param presentation
      * @param image
-     * @param categorie 
+     * @param categorie
      */
-    public void addDrink(int code, String name, String description, int price, String presentation, String image, String categorie) {
+    public boolean addDrink(int code, String name, String description, int price, String presentation, String image, String categorie) {
         Categories tempC = searchCategorie(categorie);
-        Drink newDrink = new Drink(code, name, description, price, presentation, image);
-        if (tempC.getListDrink()==null) {
+        if (verFood(code)) {
+            Drink newDrink = new Drink(code, name, description, price, presentation, image);
             tempC.getListDrink().add(newDrink);
-            JOptionPane.showMessageDialog(null, "It was created correctly");
-            return;
+            return true;
         }
-        for (int x = 0; x < tempC.getListDrink().size(); x++) {
-            if (tempC.getListDrink().get(x).getCode() == code) {
-                JOptionPane.showMessageDialog(null, "This code already exists");
-                return;
-            }
-        }
-        tempC.getListDrink().add(newDrink);
-        JOptionPane.showMessageDialog(null, "It was created correctly");
+        return false;
     }
-    
-    /**
-     * Add drinks to the categories
-     * @param code
-     * @param name
-     * @param description
-     * @param price
-     * @param presentation
-     * @param image
-     * @param categorie 
-     */
-    public void addDrink(int code, String name, String description, int price, String presentation, String image, String categorie) {
-        Categories tempC = searchCategorie(categorie);
-        Drink newDrink = new Drink(code, name, description, price, presentation, image);
-        if (tempC.getListDrink()==null) {
-            tempC.getListDrink().add(newDrink);
-            JOptionPane.showMessageDialog(null, "It was created correctly");
-            return;
-        }
-        for (int x = 0; x < tempC.getListDrink().size(); x++) {
-            if (tempC.getListDrink().get(x).getCode() == code) {
-                JOptionPane.showMessageDialog(null, "This code already exists");
-                return;
+
+    public boolean verFood(int code) {
+        for (int i = 0; i < listCategories.size(); i++) {
+            for (int j = 0; j < listCategories.get(i).getListDish().size(); j++) {
+                if (listCategories.get(i).getListDish().get(j).getCode() == code) {
+                    return false;
+                }
+            }
+            for (int j = 0; j < listCategories.get(i).getListDrink().size(); j++) {
+                if (listCategories.get(i).getListDrink().get(j).getCode() == code) {
+                    return false;
+                }
+            }
+            for (int j = 0; j < listCategories.get(i).getListIngredients().size(); j++) {
+                if (listCategories.get(i).getListIngredients().get(j).getCode() == code) {
+                    return false;
+                }
             }
         }
-        tempC.getListDrink().add(newDrink);
-        JOptionPane.showMessageDialog(null, "It was created correctly");
+        return true;
     }
 }

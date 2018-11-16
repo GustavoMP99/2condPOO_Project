@@ -15,4 +15,10 @@ public class Customer extends Person {
     public String getType() {
         return "Customer";
     }
+    public void addFood(Food tempF){
+        shoppingCart.add(tempF);
+    }
+    public void deleteFood(Food tempF){
+        shoppingCart.remove(tempF);
+    }
 }
