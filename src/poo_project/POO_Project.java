@@ -35,7 +35,7 @@ public class POO_Project {
          Seller seller= new Seller(321, "1","Hitler");
          Customer customer= new Customer(111,"1","Gusi");
          admin.addCategories("Animu food");
-         admin.addDish(0, "Sho", "Sea necia", 1000, "Mediano", "C:\\Users\\gusta\\Documents\\NetBeansProjects\\ProjectPOO2\\ProjectPOO2\\2condPOO_Project\\src\\Images\\food3.png", "Holi", "Animu food");
+         admin.addDish(0, "Sho", "Sea necia", 1000, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\food3.png", "Holi", "Animu food");
          users.add(admin);
          users.add(chef);
          users.add(seller);
