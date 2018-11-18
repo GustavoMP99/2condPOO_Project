@@ -474,8 +474,8 @@ public class wCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void CBfoodItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBfoodItemStateChanged
-        ShowFood();
         x = 0;
+        ShowFood();
     }//GEN-LAST:event_CBfoodItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -483,6 +483,7 @@ public class wCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void CBdishItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBdishItemStateChanged
+        x = 0;
         ShowFood();
     }//GEN-LAST:event_CBdishItemStateChanged
 
