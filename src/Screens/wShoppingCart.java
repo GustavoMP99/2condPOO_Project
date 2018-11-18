@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Screens;
 
 import javax.swing.table.DefaultTableModel;
+import static Screens.Login.cus;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,15 +11,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class wShoppingCart extends javax.swing.JFrame {
 
+    DefaultTableModel model;
+
     /**
      * Creates new form wShoppingCart
      */
     public wShoppingCart() {
         initComponents();
+        this.setIconImage(new ImageIcon(getClass().getResource("/Images/icon"
+                + "Two.png")).getImage());
+        this.setLocationRelativeTo(null);
         Object[] columnNames = {"Food/Drink/Ingredient", "Price"};
-        DefaultTableModel dfTable = (DefaultTableModel) jTable1.getModel();
-        dfTable.addColumn(columnNames);
-        jTable1.setModel(dfTable);
+        String data[][] = {};
+        model = new DefaultTableModel(data, columnNames);
+        jTable1.setModel(model);
+        showFood();
 
     }
 
@@ -42,6 +46,11 @@ public class wShoppingCart extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 153, 102));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jPanel1.setForeground(new java.awt.Color(255, 153, 102));
+
+        jTable1.setFont(new java.awt.Font("Ink Free", 0, 19)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -55,8 +64,17 @@ public class wShoppingCart extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
+        jButton2.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Pay");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -70,13 +88,13 @@ public class wShoppingCart extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
@@ -99,6 +117,10 @@ public class wShoppingCart extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        deleteFood();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,8 +157,37 @@ public class wShoppingCart extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Method to show the shopcart of the client
+     */
     public void showFood() {
+        cleanTable();
+        for (int i = 0; i < cus.getShoppingCart().size(); i++) {
+            String data[] = {cus.getShoppingCart().get(i).getName(), Integer.
+                    toString(cus.getShoppingCart().get(i).getPrice())};
+            model.addRow(data);
+        }
+    }
 
+    /**
+     * Method to delete food from de shoppingcart
+     */
+    public void deleteFood() {
+        int pos = jTable1.getSelectedRow();
+        cus.getShoppingCart().remove(pos);
+        showFood();
+        JOptionPane.showMessageDialog(null, "Deleted Correctly");
+    }
+
+    /**
+     * Method to clean the table
+     */
+    public void cleanTable() {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        int filas = jTable1.getRowCount();
+        for (int i = 0; filas > i; i++) {
+            modelo.removeRow(0);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

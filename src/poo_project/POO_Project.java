@@ -6,6 +6,7 @@ import Class.Chef;
 import Class.Customer;
 import Class.Food;
 import Class.Person;
+import Class.SalesCheck;
 import Class.Seller;
 import Screens.Login;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class POO_Project {
     
   public static ArrayList<Person> users;
   public static ArrayList<Categories> listCategories;
+  public static ArrayList<SalesCheck> listSalesCheck;
    
     public static void main(String[] args) {
       users = new ArrayList<Person>();

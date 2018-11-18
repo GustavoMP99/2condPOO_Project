@@ -10,6 +10,11 @@ import javax.swing.JOptionPane;
 import poo_project.POO_Project;
 
 public class Login extends javax.swing.JFrame {
+    
+    public static Seller sell;
+    public static  Customer cus;
+    public static Chef chef;
+    public static Administrator admin;
 
     /**
      * Creates new form Login
@@ -50,6 +55,7 @@ public class Login extends javax.swing.JFrame {
                     case "Customer":
                         wCustomer wCC = new wCustomer((Customer) userTemp);
                         wCC.setVisible(true);
+                        cus=(Customer) userTemp;
                         this.dispose();
                         break;
                 }

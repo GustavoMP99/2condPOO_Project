@@ -11,8 +11,6 @@ public class Order {
 
     private ArrayList<Dish> listDish;
 
-    private ArrayList<Categories> listCategories;
-
     private int code;
 
     private String client;
@@ -33,22 +31,16 @@ public class Order {
 
     private Deliver deliver;
 
-    private int deliveryTime;
+    private double deliveryTime;
 
-    public Order(int code, String client, int price, Date requested, Date sent, Date received, String state, Seller seller, Chef chef, Deliver deliver, int deliveryTime) {
+    public Order(int code, String client, int price, Date requested, String state, double deliveryTime) {
         this.code = code;
         this.client = client;
         this.price = price;
         this.requested = requested;
-        this.sent = sent;
-        this.received = null;
         this.state = state;
-        this.seller = seller;
-        this.chef = chef;
-        this.deliver = deliver;
-        this.deliveryTime = deliveryTime;
+        this.deliveryTime=deliveryTime;
         this.listExtra= new ArrayList<>();
-        this.listCategories=new ArrayList<>();
         this.listDrinks=new ArrayList<>();
         this.listDish=new ArrayList<>();
     }  
@@ -93,7 +85,7 @@ public class Order {
         this.deliver = deliver;
     }
 
-    public void setDeliveryTime(int deliveryTime) {
+    public void setDeliveryTime(double deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
 
@@ -137,7 +129,7 @@ public class Order {
         return deliver;
     }
 
-    public int getDeliveryTime() {
+    public double getDeliveryTime() {
         return deliveryTime;
     }
     
