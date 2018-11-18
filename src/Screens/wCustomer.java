@@ -4,6 +4,7 @@ import Class.Categories;
 import Class.Customer;
 import Class.Dish;
 import Class.Drink;
+import Class.Food;
 import Class.Ingredients;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -11,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static poo_project.POO_Project.listCategories;
 import static poo_project.POO_Project.searchCategorie;
+import static Screens.Login.cus;
 
 /**
  *
@@ -19,12 +21,14 @@ import static poo_project.POO_Project.searchCategorie;
 public class wCustomer extends javax.swing.JFrame {
 
     Customer customer;
+    Food tempF;
 
     public wCustomer(Customer customer) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/Images/iconTwo.png")).getImage());
         categoriesCB();
+        jSpinner1.setValue(1);
     }
     public int x = 0;
 
@@ -69,7 +73,7 @@ public class wCustomer extends javax.swing.JFrame {
                 descriptionC.setText(dish.getDescription());
                 presentationC.setText(dish.getPresentation());
                 priceC.setText(Integer.toString(dish.getPrice()));
-
+                tempF=dish;
                 try {
                     ImageIcon ImgIcon = new ImageIcon(dish.getImage());
                     Icon icono = new ImageIcon(ImgIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
@@ -90,7 +94,7 @@ public class wCustomer extends javax.swing.JFrame {
                 descriptionC.setText(drink.getDescription());
                 presentationC.setText(drink.getPresentation());
                 priceC.setText(Integer.toString(drink.getPrice()));
-
+                tempF=drink;
                 try {
                     ImageIcon ImgIcon = new ImageIcon(drink.getImage());
                     Icon icono = new ImageIcon(ImgIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
@@ -111,7 +115,7 @@ public class wCustomer extends javax.swing.JFrame {
                 descriptionC.setText(ing.getDescription());
                 presentationC.setText(ing.getPresentation());
                 priceC.setText(Integer.toString(ing.getPrice()));
-
+                tempF=ing;
                 try {
                     ImageIcon ImgIcon = new ImageIcon(ing.getImage());
                     Icon icono = new ImageIcon(ImgIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
@@ -487,13 +491,33 @@ public class wCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_CBdishItemStateChanged
 
     private void Exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Exit1ActionPerformed
-        // TODO add your handling code here:
+        wShoppingCart nScreen = new wShoppingCart();
+        nScreen.setVisible(true);
     }//GEN-LAST:event_Exit1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        if (tempF!=null) {
+            addFood();
+            if ((int)jSpinner1.getValue()!=0) {
+              JOptionPane.showMessageDialog(null, "Added correctly");  
+            }
+            
+            jSpinner1.setValue(1);
+        }
+                // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * Method to add food to the arrayList
+     */
+    public void addFood(){
+    int acu= (int) jSpinner1.getValue();
+    int in=0;
+    while(in!=acu){
+        cus.addFood(tempF);
+        in++;
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBdish;

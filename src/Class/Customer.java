@@ -8,6 +8,7 @@ public class Customer extends Person {
 
     public Customer(int id, String password, String name) {
         super(id, password, name);
+        this.shoppingCart= new ArrayList<Food>();
     }
 
     
@@ -18,7 +19,9 @@ public class Customer extends Person {
     public void addFood(Food tempF){
         shoppingCart.add(tempF);
     }
-    public void deleteFood(Food tempF){
-        shoppingCart.remove(tempF);
+
+    public ArrayList<Food> getShoppingCart() {
+        return shoppingCart;
     }
+    
 }
