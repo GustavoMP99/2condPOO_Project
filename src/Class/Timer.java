@@ -19,8 +19,8 @@ public class Timer extends SwingWorker<String, String> {
     
     @Override
     protected String doInBackground() throws Exception {
-        while(time!=time2){
-            String[] time3 =time.split(":");
+        while(this.time2!=this.time){
+            String[] time3 =this.time.split(":");
             int hour= Integer.parseInt(time3[0]);
             int min=Integer.parseInt(time3[1]);
             Thread.sleep(60000);
@@ -30,19 +30,24 @@ public class Timer extends SwingWorker<String, String> {
             }
             min+=1;
             if (min<10&&hour<10) {
-                time="0"+hour+":0"+min;
+                this.time="0"+hour+":0"+min;
             }
             else if (min<10) {
-                time=hour+":0"+min;
+                this.time=hour+":0"+min;
             }
             else if(hour<10){
-                time="0"+hour+":"+min;
+                this.time="0"+hour+":"+min;
             }
             else{
-            time=hour+":"+min;
+            this.time=hour+":"+min;
             }
             System.out.println(time);
+            System.out.println(time2);
+            if (time.equals(time2)&&time!=null &&time2!=null) {
+                break;
+            }
         }
+        System.out.println("fin");
         return time;
     }
     

@@ -71,6 +71,7 @@ public abstract class Food {
     }
     public void setTimer(String time){
         this.timer=  new Timer("00:00", time);
+        timer.execute();
     }
     public abstract String getType();
     

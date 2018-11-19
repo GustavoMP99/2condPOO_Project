@@ -5,6 +5,7 @@ import static Class.Administrator.searchCategorie;
 import Class.Categories;
 import Class.Dish;
 import Class.Drink;
+import Class.Food;
 import Class.Ingredients;
 import java.awt.event.ItemEvent;
 import java.io.File;
@@ -13,6 +14,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import static poo_project.POO_Project.listCategories;
+import static poo_project.POO_Project.searchfood;
 
 /**
  *
@@ -467,7 +469,17 @@ public class Admi extends javax.swing.JFrame {
         }
 
     }
+    
+    public void TimeDiscount(){
+         String tempF= (String) CBavailable.getSelectedItem();
+        String[] food= tempF.split("-");
+        Food tempF1= searchfood(Integer.parseInt(food[0]));
+        String h= hora.getText();
+        tempF1.setTimer(h);
+        JOptionPane.showMessageDialog(null, "The discount was applied for "+ h);
+    }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -649,6 +661,7 @@ public class Admi extends javax.swing.JFrame {
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
         hora = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2328,6 +2341,15 @@ public class Admi extends javax.swing.JFrame {
         }
         hora.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
 
+        jButton1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText(" Apply discount");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -2359,7 +2381,10 @@ public class Admi extends javax.swing.JFrame {
                         .addGap(244, 244, 244)
                         .addComponent(jLabel76)
                         .addGap(18, 18, 18)
-                        .addComponent(CBavailable, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CBavailable, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(363, 363, 363)
+                        .addComponent(jButton1)))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -2382,7 +2407,9 @@ public class Admi extends javax.swing.JFrame {
                     .addComponent(jLabel79)
                     .addComponent(jLabel80)
                     .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(jButton1)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Discounts", jPanel2);
@@ -2585,6 +2612,10 @@ public class Admi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CBdiscountsItemStateChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       TimeDiscount();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBavailable;
@@ -2637,6 +2668,7 @@ public class Admi extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField hora;
     private javax.swing.JTextField ingredientsDish;
     private javax.swing.JTextField ingredientsDishE;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

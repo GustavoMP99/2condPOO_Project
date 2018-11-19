@@ -506,10 +506,7 @@ public class wCustomer extends javax.swing.JFrame {
             
             jSpinner1.setValue(1);
         }
-<<<<<<< Updated upstream
-=======
-                // TODO add your handling code here:
->>>>>>> Stashed changes
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

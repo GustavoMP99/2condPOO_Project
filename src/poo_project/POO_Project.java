@@ -36,6 +36,12 @@ public class POO_Project {
         lg.setVisible(true);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    
+
+
+>>>>>>> master
 
     public static void loadInfo() {
         Administrator admin = new Administrator(2018, "1", "Nani");
@@ -45,6 +51,8 @@ public class POO_Project {
         Deliver del = new Deliver(777, "1", "Daniela");
         admin.addCategories("Chinese Food");
         admin.addDish(0, "Arroz Kun Fu Panda", "Arroz chino", 1000, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\food3.png", "Chinese Food", "Chinese Food");
+                 admin.addDrink(01, "Coca Cola", "Coquita", 700, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\coca.jpg", "Chinese Food");
+         admin.addIngredientExtra(02, "Arroz", "Arrocito", 800, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\arroz.jpg", "Chinese Food");
         Order tempO = new Order(0, "Gusi", 2000, date(), "Ordered");
         tempO.getListDish().add((Dish) searchfood(0));
         tempO.getListDish().add((Dish) searchfood(0));
@@ -54,6 +62,7 @@ public class POO_Project {
         users.add(seller);
         users.add(customer);
         users.add(del);
+<<<<<<< HEAD
 =======
     
     public static void loadInfo(){
@@ -69,6 +78,8 @@ public class POO_Project {
          users.add(chef);
          users.add(seller);
          users.add(customer);
+>>>>>>> master
+=======
 >>>>>>> master
     }
 
