@@ -5,7 +5,6 @@ import Class.Deliver;
 import Class.Food;
 import Class.Order;
 import Class.Seller;
-import static Screens.Login.chef;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -232,7 +231,7 @@ public class wSeller extends javax.swing.JFrame {
         tempO.setChef((Chef) searchUser(Integer.parseInt(chef[0])));
         tempO.setDeliver((Deliver) searchUser(Integer.parseInt(deliver[0])));
         tempO.setSeller(seller);
-        tempO.setDeliveryTime(Double.parseDouble(timeAprox));
+        //tempO.setDeliveryTime(Double.parseDouble(timeAprox));
         jTextField1.setText("");
         tempO.setState("Asignned");
         showOrder();

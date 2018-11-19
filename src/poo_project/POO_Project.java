@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import Class.UsersFactory;
 
 /**
  *
@@ -35,20 +36,14 @@ public class POO_Project {
         Login lg = new Login();
         lg.setVisible(true);
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    
-
-
->>>>>>> master
 
     public static void loadInfo() {
-        Administrator admin = new Administrator(2018, "1", "Nani");
-        Chef chef = new Chef(123, "1", "Adolfo");
-        Seller seller = new Seller(321, "1", "Hitler");
-        Customer customer = new Customer(111, "1", "Gusi");
-        Deliver del = new Deliver(777, "1", "Daniela");
+        Administrator admin = Administrator.getSingletonInstance(2018, "1", "Nani");
+        Chef chef = (Chef) UsersFactory.getPerson("Chef",123, "1", "Adolfo");
+        System.out.println(chef.getId());
+        Seller seller = (Seller) UsersFactory.getPerson("Seller",321, "1", "Hitler");
+        Customer customer = (Customer) UsersFactory.getPerson("Customer",111, "1", "Gusi");
+        Deliver del = (Deliver) UsersFactory.getPerson("Deliver",777, "1", "Daniela");
         admin.addCategories("Chinese Food");
         admin.addDish(0, "Arroz Kun Fu Panda", "Arroz chino", 1000, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\food3.png", "Chinese Food", "Chinese Food");
                  admin.addDrink(01, "Coca Cola", "Coquita", 700, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\coca.jpg", "Chinese Food");
@@ -62,25 +57,6 @@ public class POO_Project {
         users.add(seller);
         users.add(customer);
         users.add(del);
-<<<<<<< HEAD
-=======
-    
-    public static void loadInfo(){
-         Administrator admin = new Administrator(2018, "1", "Nani");
-         Chef chef= new Chef(123, "1","Adolfo");
-         Seller seller= new Seller(321, "1","Hitler");
-         Customer customer= new Customer(111,"1","Gusi");
-         admin.addCategories("Animu food");
-         admin.addDish(0, "Sho", "Sea necia", 1000, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\food3.png", "Holi", "Animu food");
-         admin.addDrink(01, "Coca Cola", "Coquita", 700, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\coca.jpg", "Animu food");
-         admin.addIngredientExtra(02, "Arroz", "Arrocito", 800, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\arroz.jpg", "Animu food");
-         users.add(admin);
-         users.add(chef);
-         users.add(seller);
-         users.add(customer);
->>>>>>> master
-=======
->>>>>>> master
     }
 
     public static Person searchUser(int ID) {

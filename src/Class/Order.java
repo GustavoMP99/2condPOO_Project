@@ -21,11 +21,11 @@ public class Order {
 
     private DateFormat requested;
 
-    private Date sent;
+    private DateFormat sent;
 
-    private Date received;
+    private DateFormat received;
 
-    private String state;
+    private String state;//Ordered, Asignned, Ready, Delivered
 
     private Seller seller;
 
@@ -33,7 +33,7 @@ public class Order {
 
     private Deliver deliver;
 
-    private double deliveryTime;
+    private String deliveryTime;
 
     public Order(int code, String client, int price, DateFormat requested, String state) {
         this.code = code;
@@ -41,10 +41,10 @@ public class Order {
         this.price = price;
         this.requested = requested;
         this.state = state;
-        this.listExtra= new ArrayList<>();
-        this.listDrinks=new ArrayList<>();
-        this.listDish=new ArrayList<>();
-    }  
+        this.listExtra = new ArrayList<>();
+        this.listDrinks = new ArrayList<>();
+        this.listDish = new ArrayList<>();
+    }
 
     public ArrayList<Ingredients> getListExtra() {
         return listExtra;
@@ -74,11 +74,11 @@ public class Order {
         this.requested = requested;
     }
 
-    public void setSent(Date sent) {
+    public void setSent(DateFormat sent) {
         this.sent = sent;
     }
 
-    public void setReceived(Date received) {
+    public void setReceived(DateFormat received) {
         this.received = received;
     }
 
@@ -98,7 +98,7 @@ public class Order {
         this.deliver = deliver;
     }
 
-    public void setDeliveryTime(double deliveryTime) {
+    public void setDeliveryTime(String deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
 
@@ -118,11 +118,11 @@ public class Order {
         return requested;
     }
 
-    public Date getSent() {
+    public DateFormat getSent() {
         return sent;
     }
 
-    public Date getReceived() {
+    public DateFormat getReceived() {
         return received;
     }
 
@@ -142,17 +142,18 @@ public class Order {
         return deliver;
     }
 
-    public double getDeliveryTime() {
+    public String getDeliveryTime() {
         return deliveryTime;
     }
-    
-        public String getHour(DateFormat dateTemp) {
+
+    public String getHour(DateFormat dateTemp) {
         Date date = new Date();
         DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
         String dateS = hourdateFormat.format(date);
         String[] hour = dateS.split(" ");
         return hour[0];
     }
+
     public int getDay(DateFormat dateTemp) {
         Date date = new Date();
         DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
@@ -160,6 +161,12 @@ public class Order {
         String[] hour = dateS.split(" ");
         String[] day = hour[1].split("/");
         return Integer.parseInt(day[0]);
+    }
+
+    public DateFormat dateRN() {
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        return hourdateFormat;
     }
 
     public int getMounth(DateFormat dateTemp) {
@@ -179,5 +186,5 @@ public class Order {
         String[] day = hour[1].split("/");
         return Integer.parseInt(day[2]);
     }
-    
+
 }

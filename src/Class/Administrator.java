@@ -5,7 +5,9 @@ import static poo_project.POO_Project.listCategories;
 
 public class Administrator extends Person {
 
-    public Administrator(int id, String password, String name) {
+    private static Administrator soyUnico;
+
+    private Administrator(int id, String password, String name) {
         super(id, password, name);
     }
 
@@ -87,19 +89,20 @@ public class Administrator extends Person {
         }
         return false;
     }
-    
+
     /**
      * Add extra ingredients to the categories
+     *
      * @param code
      * @param name
      * @param description
      * @param price
      * @param presentation
      * @param image
-     * @param categorie 
+     * @param categorie
      */
-    public boolean addIngredientExtra(int code, String name, String description, int price, String presentation, String image,String categorie) {
-         Categories tempC = searchCategorie(categorie);
+    public boolean addIngredientExtra(int code, String name, String description, int price, String presentation, String image, String categorie) {
+        Categories tempC = searchCategorie(categorie);
         if (verFood(code)) {
             Ingredients newIngredients = new Ingredients(code, name, description, price, presentation, image);
             tempC.getListIngredients().add(newIngredients);
@@ -129,10 +132,10 @@ public class Administrator extends Person {
         return true;
 
     }
-    
-    public void EditDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie){
-        Categories tempC=  searchCategorie(categorie);
-        Dish tempD= tempC.searchDish(code);
+
+    public void EditDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie) {
+        Categories tempC = searchCategorie(categorie);
+        Dish tempD = tempC.searchDish(code);
         tempD.setDescription(description);
         tempD.setIngredients(ingredients);
         tempD.setImage(image);
@@ -140,24 +143,47 @@ public class Administrator extends Person {
         tempD.setPrice(price);
         tempD.setName(name);
     }
-    
-    public void EditDrink(int code, String name, String description, int price, String presentation, String image, String categorie){
-        Categories tempC=  searchCategorie(categorie);
-        Drink tempD= tempC.searchDrink(code);
+
+    public void EditDrink(int code, String name, String description, int price, String presentation, String image, String categorie) {
+        Categories tempC = searchCategorie(categorie);
+        Drink tempD = tempC.searchDrink(code);
         tempD.setDescription(description);
         tempD.setImage(image);
         tempD.setPresentation(presentation);
         tempD.setPrice(price);
         tempD.setName(name);
     }
-    
-     public void EditIngredient(int code, String name, String description, int price, String presentation, String image, String categorie){
-        Categories tempC=  searchCategorie(categorie);
-        Ingredients tempE= tempC.searchIngredient(code);
+
+    public void EditIngredient(int code, String name, String description, int price, String presentation, String image, String categorie) {
+        Categories tempC = searchCategorie(categorie);
+        Ingredients tempE = tempC.searchIngredient(code);
         tempE.setDescription(description);
         tempE.setImage(image);
         tempE.setPresentation(presentation);
         tempE.setPrice(price);
         tempE.setName(name);
+    }
+
+    public static Administrator getSingletonInstance(int id, String password, 
+            String name) {
+        if (soyUnico == null) {
+            soyUnico = new Administrator(id, password, name);
+        } else {
+            JOptionPane.showMessageDialog(null,"You cant create another "
+                    + name
+                    + " because it is already created ");
+        }
+        return soyUnico;
+    }
+    
+        @Override
+    public Administrator clone() {
+        try {
+            throw new CloneNotSupportedException();
+        } catch (CloneNotSupportedException ex) {
+            JOptionPane.showMessageDialog(null,"You cant clone an Admin");
+            
+        }
+        return null;
     }
 }

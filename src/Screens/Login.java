@@ -13,7 +13,7 @@ public class Login extends javax.swing.JFrame {
     
     public static Seller sell;
     public static Customer cus;
-    public static Chef chef;
+    public static Chef chef1;
     public static Administrator admin;
 
     /**
@@ -41,9 +41,9 @@ public class Login extends javax.swing.JFrame {
                         break;
 
                     case "Chef":
+                        chef1=(Chef) userTemp;
                         wChef wC = new wChef((Chef) userTemp);
                         wC.setVisible(true);
-                        chef=(Chef) userTemp;
                         this.dispose();
                         break;
 
@@ -59,6 +59,8 @@ public class Login extends javax.swing.JFrame {
                         wCC.setVisible(true);
                         cus=(Customer) userTemp;
                         this.dispose();
+                        break;
+                    case "Deliver":
                         break;
                 }
             }

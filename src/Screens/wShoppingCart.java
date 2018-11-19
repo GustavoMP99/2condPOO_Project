@@ -8,8 +8,6 @@ import javax.swing.table.DefaultTableModel;
 import static Screens.Login.cus;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import static java.util.Calendar.DAY_OF_WEEK_IN_MONTH;
 import static poo_project.POO_Project.listSalesCheck;
 import java.util.Date;
 import javax.swing.ImageIcon;
