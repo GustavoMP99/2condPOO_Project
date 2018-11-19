@@ -290,6 +290,7 @@ public class wCustomer extends javax.swing.JFrame {
         });
 
         jSpinner1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -478,8 +479,8 @@ public class wCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void CBfoodItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBfoodItemStateChanged
-        ShowFood();
         x = 0;
+        ShowFood();
     }//GEN-LAST:event_CBfoodItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -487,6 +488,7 @@ public class wCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void CBdishItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBdishItemStateChanged
+        x = 0;
         ShowFood();
     }//GEN-LAST:event_CBdishItemStateChanged
 
@@ -504,7 +506,10 @@ public class wCustomer extends javax.swing.JFrame {
             
             jSpinner1.setValue(1);
         }
+<<<<<<< Updated upstream
+=======
                 // TODO add your handling code here:
+>>>>>>> Stashed changes
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

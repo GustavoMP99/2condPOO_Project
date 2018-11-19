@@ -35,6 +35,7 @@ public class POO_Project {
         Login lg = new Login();
         lg.setVisible(true);
     }
+<<<<<<< HEAD
 
     public static void loadInfo() {
         Administrator admin = new Administrator(2018, "1", "Nani");
@@ -53,6 +54,22 @@ public class POO_Project {
         users.add(seller);
         users.add(customer);
         users.add(del);
+=======
+    
+    public static void loadInfo(){
+         Administrator admin = new Administrator(2018, "1", "Nani");
+         Chef chef= new Chef(123, "1","Adolfo");
+         Seller seller= new Seller(321, "1","Hitler");
+         Customer customer= new Customer(111,"1","Gusi");
+         admin.addCategories("Animu food");
+         admin.addDish(0, "Sho", "Sea necia", 1000, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\food3.png", "Holi", "Animu food");
+         admin.addDrink(01, "Coca Cola", "Coquita", 700, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\coca.jpg", "Animu food");
+         admin.addIngredientExtra(02, "Arroz", "Arrocito", 800, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\arroz.jpg", "Animu food");
+         users.add(admin);
+         users.add(chef);
+         users.add(seller);
+         users.add(customer);
+>>>>>>> master
     }
 
     public static Person searchUser(int ID) {
