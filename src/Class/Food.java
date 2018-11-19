@@ -1,6 +1,6 @@
 package Class;
 
-public class Food {
+public abstract class Food {
 
     private int code;
 
@@ -13,6 +13,8 @@ public class Food {
     private String presentation;
 
     private String image;
+    
+    private Timer timer;
 
     public Food(int code, String name, String description, int price, String presentation, String image) {
         this.code = code;
@@ -21,6 +23,7 @@ public class Food {
         this.price = price;
         this.presentation = presentation;
         this.image = image;
+        this.timer=null;
     }
 
     public int getCode() {
@@ -66,6 +69,11 @@ public class Food {
     public void setImage(String image) {
         this.image = image;
     }
+    public void setTimer(String time){
+        this.timer=  new Timer("00:00", time);
+        timer.execute();
+    }
+    public abstract String getType();
     
     
 }

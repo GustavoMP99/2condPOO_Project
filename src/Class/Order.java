@@ -1,5 +1,7 @@
 package Class;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +19,7 @@ public class Order {
 
     private int price;
 
-    private Date requested;
+    private DateFormat requested;
 
     private Date sent;
 
@@ -33,17 +35,28 @@ public class Order {
 
     private double deliveryTime;
 
-    public Order(int code, String client, int price, Date requested, String state, double deliveryTime) {
+    public Order(int code, String client, int price, DateFormat requested, String state) {
         this.code = code;
         this.client = client;
         this.price = price;
         this.requested = requested;
         this.state = state;
-        this.deliveryTime=deliveryTime;
         this.listExtra= new ArrayList<>();
         this.listDrinks=new ArrayList<>();
         this.listDish=new ArrayList<>();
     }  
+
+    public ArrayList<Ingredients> getListExtra() {
+        return listExtra;
+    }
+
+    public ArrayList<Drink> getListDrinks() {
+        return listDrinks;
+    }
+
+    public ArrayList<Dish> getListDish() {
+        return listDish;
+    }
 
     public void setCode(int code) {
         this.code = code;
@@ -57,7 +70,7 @@ public class Order {
         this.price = price;
     }
 
-    public void setRequested(Date requested) {
+    public void setRequested(DateFormat requested) {
         this.requested = requested;
     }
 
@@ -101,7 +114,7 @@ public class Order {
         return price;
     }
 
-    public Date getRequested() {
+    public DateFormat getRequested() {
         return requested;
     }
 
@@ -133,6 +146,38 @@ public class Order {
         return deliveryTime;
     }
     
-    
+        public String getHour(DateFormat dateTemp) {
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        String dateS = hourdateFormat.format(date);
+        String[] hour = dateS.split(" ");
+        return hour[0];
+    }
+    public int getDay(DateFormat dateTemp) {
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        String dateS = hourdateFormat.format(date);
+        String[] hour = dateS.split(" ");
+        String[] day = hour[1].split("/");
+        return Integer.parseInt(day[0]);
+    }
+
+    public int getMounth(DateFormat dateTemp) {
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        String dateS = hourdateFormat.format(date);
+        String[] hour = dateS.split(" ");
+        String[] day = hour[1].split("/");
+        return Integer.parseInt(day[1]);
+    }
+
+    public int getYear(DateFormat dateTemp) {
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        String dateS = hourdateFormat.format(date);
+        String[] hour = dateS.split(" ");
+        String[] day = hour[1].split("/");
+        return Integer.parseInt(day[2]);
+    }
     
 }
