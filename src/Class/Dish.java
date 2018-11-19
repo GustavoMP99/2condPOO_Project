@@ -16,6 +16,11 @@ public class Dish extends Food {
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
+
+    @Override
+    public String getType() {
+        return "Dish";
+    }
     
     
 }

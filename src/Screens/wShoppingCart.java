@@ -1,7 +1,17 @@
 package Screens;
 
+import Class.Dish;
+import Class.Drink;
+import Class.Ingredients;
+import Class.Order;
 import javax.swing.table.DefaultTableModel;
 import static Screens.Login.cus;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import static java.util.Calendar.DAY_OF_WEEK_IN_MONTH;
+import static poo_project.POO_Project.listSalesCheck;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -44,7 +54,8 @@ public class wShoppingCart extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -76,6 +87,11 @@ public class wShoppingCart extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Pay");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,6 +138,10 @@ public class wShoppingCart extends javax.swing.JFrame {
         deleteFood();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        makeSaleCheck();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,14 +177,24 @@ public class wShoppingCart extends javax.swing.JFrame {
         });
     }
 
+    public int price = 0;
+
     /**
-     * Method to show the shopcart of the client
+     * Method to show the shoppingcart of the client
      */
     public void showFood() {
         cleanTable();
+        price = 0;
+        if (cus.getShoppingCart().size() >= 1) {
+            jButton2.setEnabled(true);
+        } else {
+            jButton2.setEnabled(false);
+        }
+
         for (int i = 0; i < cus.getShoppingCart().size(); i++) {
             String data[] = {cus.getShoppingCart().get(i).getName(), Integer.
-                    toString(cus.getShoppingCart().get(i).getPrice())};
+                toString(cus.getShoppingCart().get(i).getPrice())};
+            price += cus.getShoppingCart().get(i).getPrice();
             model.addRow(data);
         }
     }
@@ -173,10 +203,14 @@ public class wShoppingCart extends javax.swing.JFrame {
      * Method to delete food from de shoppingcart
      */
     public void deleteFood() {
-        int pos = jTable1.getSelectedRow();
-        cus.getShoppingCart().remove(pos);
-        showFood();
-        JOptionPane.showMessageDialog(null, "Deleted Correctly");
+        try {
+            int pos = jTable1.getSelectedRow();
+            cus.getShoppingCart().remove(pos);
+            showFood();
+            JOptionPane.showMessageDialog(null, "Deleted Correctly");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Select the thing that you want delete");
+        }
     }
 
     /**
@@ -189,6 +223,33 @@ public class wShoppingCart extends javax.swing.JFrame {
             modelo.removeRow(0);
         }
     }
+
+    //Ordered, Asignned, Ready, Delivered
+    public void makeSaleCheck() {
+        Order tempO = new Order(listSalesCheck.size(), cus.getName(), price, date(), "Ordered");
+        for (int i = 0; i < cus.getShoppingCart().size(); i++) {
+            if (cus.getShoppingCart().get(i).getType() == "Dish") {
+                tempO.getListDish().add((Dish) cus.getShoppingCart().get(i));
+            } else if (cus.getShoppingCart().get(i).getType() == "Drink") {
+                tempO.getListDrinks().add((Drink) cus.getShoppingCart().get(i));
+            } else if (cus.getShoppingCart().get(i).getType() == "Ingredient") {
+                tempO.getListExtra().add((Ingredients) cus.getShoppingCart().get(i));
+            }
+        }
+        listSalesCheck.add(tempO);
+        JOptionPane.showMessageDialog(null, "Order made it");
+        cus.getShoppingCart().clear();
+        showFood();
+    }
+
+    public DateFormat date() {
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        return hourdateFormat;
+    }
+
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

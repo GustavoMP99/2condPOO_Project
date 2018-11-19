@@ -12,7 +12,7 @@ import poo_project.POO_Project;
 public class Login extends javax.swing.JFrame {
     
     public static Seller sell;
-    public static  Customer cus;
+    public static Customer cus;
     public static Chef chef;
     public static Administrator admin;
 
@@ -43,12 +43,14 @@ public class Login extends javax.swing.JFrame {
                     case "Chef":
                         wChef wC = new wChef((Chef) userTemp);
                         wC.setVisible(true);
+                        chef=(Chef) userTemp;
                         this.dispose();
                         break;
 
                     case "Seller":
                         wSeller wS = new wSeller((Seller) userTemp);
                         wS.setVisible(true);
+                        sell=(Seller) userTemp;
                         this.dispose();
                         break;
 
