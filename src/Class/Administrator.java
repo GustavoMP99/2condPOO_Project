@@ -98,22 +98,14 @@ public class Administrator extends Person {
      * @param image
      * @param categorie 
      */
-    public void addIngredientExtra(int code, String name, String description, int price, String presentation, String image,String categorie) {
-        Categories tempC = searchCategorie(categorie);
-        Ingredients newIngredient = new Ingredients(code, name, description, price, presentation, image);
-        if (tempC.getListIngredients()==null) {
-            tempC.getListIngredients().add(newIngredient);
-            JOptionPane.showMessageDialog(null, "It was created correctly");
-            return;
+    public boolean addIngredientExtra(int code, String name, String description, int price, String presentation, String image,String categorie) {
+         Categories tempC = searchCategorie(categorie);
+        if (verFood(code)) {
+            Ingredients newIngredients = new Ingredients(code, name, description, price, presentation, image);
+            tempC.getListIngredients().add(newIngredients);
+            return true;
         }
-        for (int x = 0; x < tempC.getListIngredients().size(); x++) {
-            if (tempC.getListIngredients().get(x).getCode() == code) {
-                JOptionPane.showMessageDialog(null, "This code already exists");
-                return;
-            }
-        }
-        tempC.getListIngredients().add(newIngredient);
-        JOptionPane.showMessageDialog(null, "It was created correctly");
+        return false;
     }
 
     public boolean verFood(int code) {

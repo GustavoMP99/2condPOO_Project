@@ -290,6 +290,7 @@ public class wCustomer extends javax.swing.JFrame {
         });
 
         jSpinner1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -505,7 +506,6 @@ public class wCustomer extends javax.swing.JFrame {
             
             jSpinner1.setValue(1);
         }
-                // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
