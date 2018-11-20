@@ -36,7 +36,10 @@ public class POO_Project {
         Login lg = new Login();
         lg.setVisible(true);
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     public static void loadInfo() {
         Administrator admin = Administrator.getSingletonInstance(2018, "1", "Nani");
         Chef chef = (Chef) UsersFactory.getPerson("Chef",123, "1", "Adolfo");
