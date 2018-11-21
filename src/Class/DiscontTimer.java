@@ -1,6 +1,7 @@
 
 package Class;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
 /**
@@ -10,6 +11,7 @@ import javax.swing.SwingWorker;
  */
 public class DiscontTimer extends SwingWorker<String, String> {
 
+<<<<<<< HEAD:src/Class/DiscontTimer.java
     String time;//time that starts in 00:00
     String time2;//time that you want to reach
 
@@ -19,8 +21,16 @@ public class DiscontTimer extends SwingWorker<String, String> {
      * @param time2 
      */
     public DiscontTimer(String time, String time2) {
+=======
+    String time;
+    String time2;
+    Food food;
+
+    public Timer(String time, String time2, Food food) {
+>>>>>>> master:src/Class/Timer.java
         this.time = time;
         this.time2 = time2;
+        this.food=food;
     }
     
     /**
@@ -52,13 +62,13 @@ public class DiscontTimer extends SwingWorker<String, String> {
             else{
             this.time=hour+":"+min;
             }
-            System.out.println(time);
-            System.out.println(time2);
             if (time.equals(time2)&&time!=null &&time2!=null) {
                 break;
             }
         }
-        System.out.println("fin");
+        int price= food.getTempPrice();
+        food.setPrice(price);
+        JOptionPane.showMessageDialog(null, "The discount for "+ food.getName()+ " ended");
         return time;
     }
     

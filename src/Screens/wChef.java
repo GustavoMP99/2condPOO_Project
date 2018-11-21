@@ -71,6 +71,8 @@ public class wChef extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/efoodIcon2.png"))); // NOI18N
 
+        jTable1.setBackground(new java.awt.Color(255, 153, 102));
+        jTable1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -100,7 +102,7 @@ public class wChef extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(45, 45, 45)
+                .addGap(66, 66, 66)
                 .addComponent(jLabel1)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -115,11 +117,12 @@ public class wChef extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(50, 50, 50)))
-                .addContainerGap())
+                        .addGap(57, 57, 57))))
         );
 
         jTabbedPane1.addTab("Prepare food", jPanel2);
@@ -166,10 +169,16 @@ public class wChef extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+<<<<<<< HEAD
         tempO.setState("Ready");
         tempO.endCookTimer();
         tempO.setDeliverTimer();
         showOrder();
+=======
+        tempO.setState("Ready");       
+        showOrder();
+        tempO.setSent(tempO.dateRN());
+>>>>>>> master
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

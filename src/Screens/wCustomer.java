@@ -513,6 +513,10 @@ public class wCustomer extends javax.swing.JFrame {
             
             jSpinner1.setValue(1);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

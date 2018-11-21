@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import static poo_project.POO_Project.listCategories;
 import static poo_project.POO_Project.searchfood;
+import static poo_project.POO_Project.ApplyDiscount;
 
 /**
  * Screen of the administrator
@@ -476,7 +477,10 @@ public class Admi extends javax.swing.JFrame {
         String[] food= tempF.split("-");
         Food tempF1= searchfood(Integer.parseInt(food[0]));
         String h= hora.getText();
-        tempF1.setTimer(h);
+        tempF1.setTimer(h, tempF1);
+        float disco= Integer.parseInt(discount.getValue().toString());
+        ApplyDiscount(tempF1, disco);
+        
         JOptionPane.showMessageDialog(null, "The discount was applied for "+ h);
     }
 
@@ -657,7 +661,7 @@ public class Admi extends javax.swing.JFrame {
         jLabel77 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         CBfood = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
+        discount = new javax.swing.JSpinner();
         jLabel78 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
@@ -2330,8 +2334,8 @@ public class Admi extends javax.swing.JFrame {
             }
         });
 
-        jSpinner1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        discount.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        discount.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
 
         jLabel78.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
         jLabel78.setForeground(new java.awt.Color(255, 255, 255));
@@ -2351,6 +2355,11 @@ public class Admi extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         hora.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+        hora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horaActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -2383,7 +2392,7 @@ public class Admi extends javax.swing.JFrame {
                                 .addGap(22, 22, 22)
                                 .addComponent(jLabel78)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(151, 151, 151)
                                 .addComponent(jLabel80)
                                 .addGap(26, 26, 26)
@@ -2413,7 +2422,7 @@ public class Admi extends javax.swing.JFrame {
                     .addComponent(CBavailable, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discount, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel78)
                     .addComponent(jLabel79)
                     .addComponent(jLabel80)
@@ -2719,6 +2728,10 @@ public class Admi extends javax.swing.JFrame {
        TimeDiscount();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void horaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBavailable;
@@ -2762,6 +2775,7 @@ public class Admi extends javax.swing.JFrame {
     private javax.swing.JTextField descriptionDrinkE;
     private javax.swing.JTextField descriptionEI;
     private javax.swing.JTextField descriptionExtra;
+    private javax.swing.JSpinner discount;
     private javax.swing.JTextField fileDish;
     private javax.swing.JTextField fileDishE;
     private javax.swing.JTextField fileDrink;
@@ -2871,10 +2885,13 @@ public class Admi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+<<<<<<< HEAD
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner1;
+=======
+>>>>>>> master
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;

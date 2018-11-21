@@ -24,15 +24,19 @@ public class Order {
 
     private int price;
 
+<<<<<<< HEAD
     private DateFormat requested;
     
     private CookTimer cookTimer;
     
     private DeliverTimer deliverTimer;
+=======
+    private String requested;
+>>>>>>> master
 
-    private DateFormat sent;
+    private String sent;
 
-    private DateFormat received;
+    private String received;
 
     private String state;//Ordered, Asignned, Ready, Delivered
 
@@ -43,8 +47,10 @@ public class Order {
     private Deliver deliver;
 
     private String deliveryTime;
+    
+    private int discount;
 
-    public Order(int code, String client, int price, DateFormat requested, String state) {
+    public Order(int code, String client, int price, String requested, String state) {
         this.code = code;
         this.client = client;
         this.price = price;
@@ -53,8 +59,12 @@ public class Order {
         this.listExtra = new ArrayList<>();
         this.listDrinks = new ArrayList<>();
         this.listDish = new ArrayList<>();
+<<<<<<< HEAD
         this.cookTimer=null;
         this.deliverTimer=null;
+=======
+        this.discount=0;
+>>>>>>> master
     }
 
     public ArrayList<Ingredients> getListExtra() {
@@ -125,15 +135,15 @@ public class Order {
         this.price = price;
     }
 
-    public void setRequested(DateFormat requested) {
+    public void setRequested(String requested) {
         this.requested = requested;
     }
 
-    public void setSent(DateFormat sent) {
+    public void setSent(String sent) {
         this.sent = sent;
     }
 
-    public void setReceived(DateFormat received) {
+    public void setReceived(String received) {
         this.received = received;
     }
 
@@ -169,15 +179,15 @@ public class Order {
         return price;
     }
 
-    public DateFormat getRequested() {
+    public String getRequested() {
         return requested;
     }
 
-    public DateFormat getSent() {
+    public String getSent() {
         return sent;
     }
 
-    public DateFormat getReceived() {
+    public String getReceived() {
         return received;
     }
 
@@ -201,6 +211,15 @@ public class Order {
         return deliveryTime;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+    
+    
     public String getHour(DateFormat dateTemp) {
         Date date = new Date();
         DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
@@ -218,10 +237,10 @@ public class Order {
         return Integer.parseInt(day[0]);
     }
 
-    public DateFormat dateRN() {
+    public String dateRN() {
         Date date = new Date();
         DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-        return hourdateFormat;
+        return hourdateFormat.format(date);
     }
 
     public int getMounth(DateFormat dateTemp) {

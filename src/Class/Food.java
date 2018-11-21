@@ -19,6 +19,7 @@ public abstract class Food {
 
     private String image;
     
+<<<<<<< HEAD
     private DiscontTimer timer;
 
     /**
@@ -30,6 +31,12 @@ public abstract class Food {
      * @param presentation
      * @param image 
      */
+=======
+    private Timer timer;
+    
+    private int tempPrice;
+
+>>>>>>> master
     public Food(int code, String name, String description, int price, String presentation, String image) {
         this.code = code;
         this.name = name;
@@ -38,6 +45,7 @@ public abstract class Food {
         this.presentation = presentation;
         this.image = image;
         this.timer=null;
+        this.tempPrice=price;
     }
 
     public int getCode() {
@@ -83,15 +91,29 @@ public abstract class Food {
     public void setImage(String image) {
         this.image = image;
     }
+<<<<<<< HEAD
     /**
      * Method to initizalize the timer of a discont
      * @param time 
      */
     public void setTimer(String time){
         this.timer=  new DiscontTimer("00:00", time);
+=======
+    public void setTimer(String time,  Food food){
+        this.timer=  new Timer("00:00", time,food);
+>>>>>>> master
         timer.execute();
     }
     public abstract String getType();
+
+    public int getTempPrice() {
+        return tempPrice;
+    }
+
+    public void setTempPrice(int tempPrice) {
+        this.tempPrice = tempPrice;
+    }
+    
     
     
 }

@@ -244,10 +244,10 @@ public class wShoppingCart extends javax.swing.JFrame {
         showFood();
     }
 
-    public DateFormat date() {
+    public String date() {
         Date date = new Date();
         DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-        return hourdateFormat;
+        return hourdateFormat.format(date);
     }
 
 
