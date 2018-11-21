@@ -15,8 +15,9 @@ import static poo_project.POO_Project.searchCategorie;
 import static Screens.Login.cus;
 
 /**
- *
- * @author Alvarado
+ * Screen for the customer
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
  */
 public class wCustomer extends javax.swing.JFrame {
 
@@ -44,7 +45,7 @@ public class wCustomer extends javax.swing.JFrame {
     public int verCombo = 0;
 
     /**
-     *
+     * To show the categories in a combobox
      */
     public void categoriesCB() {
         CBdish.removeAllItems();
@@ -56,7 +57,7 @@ public class wCustomer extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * Method to show the food in the combobox
      */
     public void ShowFood() {
         Categories temp = searchCategorie(CBdish.getSelectedItem().toString());
@@ -77,6 +78,8 @@ public class wCustomer extends javax.swing.JFrame {
                 try {
                     ImageIcon ImgIcon = new ImageIcon(dish.getImage());
                     Icon icono = new ImageIcon(ImgIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
+                                        System.out.println(icono);
+
                     label.setIcon(icono);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error" + ex);
@@ -98,6 +101,8 @@ public class wCustomer extends javax.swing.JFrame {
                 try {
                     ImageIcon ImgIcon = new ImageIcon(drink.getImage());
                     Icon icono = new ImageIcon(ImgIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
+                                        System.out.println(icono);
+
                     label.setIcon(icono);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error" + ex);
@@ -119,6 +124,7 @@ public class wCustomer extends javax.swing.JFrame {
                 try {
                     ImageIcon ImgIcon = new ImageIcon(ing.getImage());
                     Icon icono = new ImageIcon(ImgIcon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
+                    System.out.println(icono);
                     label.setIcon(icono);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error" + ex);
@@ -129,7 +135,7 @@ public class wCustomer extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * Method to see the next food
      */
     public void nextFood() {
         Categories temp = searchCategorie(CBdish.getSelectedItem().toString());
@@ -226,6 +232,7 @@ public class wCustomer extends javax.swing.JFrame {
 
         label.setBackground(new java.awt.Color(0, 0, 0));
         label.setForeground(new java.awt.Color(0, 0, 0));
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/noimage.png"))); // NOI18N
 
         nameC.setEditable(false);
         nameC.setFont(new java.awt.Font("Ink Free", 0, 19)); // NOI18N
@@ -506,10 +513,6 @@ public class wCustomer extends javax.swing.JFrame {
             
             jSpinner1.setValue(1);
         }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

@@ -6,8 +6,9 @@
 package Screens;
 
 /**
- *
- * @author Alvarado
+ * Miniscreen for the searcher
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
  */
 public class Searcher extends javax.swing.JFrame {
 

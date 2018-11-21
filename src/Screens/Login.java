@@ -9,6 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import poo_project.POO_Project;
 
+/**
+ * Screen for the login
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
+ */
+
 public class Login extends javax.swing.JFrame {
     
     public static Seller sell;

@@ -2,6 +2,11 @@ package Class;
 
 import java.util.ArrayList;
 
+/**
+ * Class for the customer
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
+ */
 public class Customer extends Person {
 
     private ArrayList<Food> shoppingCart;

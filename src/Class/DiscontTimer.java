@@ -4,19 +4,30 @@ package Class;
 import javax.swing.SwingWorker;
 
 /**
- *
- * @author gusta
+ * Class for the discont timer
+ * Date: 20/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
  */
-public class Timer extends SwingWorker<String, String> {
+public class DiscontTimer extends SwingWorker<String, String> {
 
-    String time;
-    String time2;
+    String time;//time that starts in 00:00
+    String time2;//time that you want to reach
 
-    public Timer(String time, String time2) {
+    /**
+     * Constructor of discontTimer
+     * @param time
+     * @param time2 
+     */
+    public DiscontTimer(String time, String time2) {
         this.time = time;
         this.time2 = time2;
     }
     
+    /**
+     * The timer that is in the background that ends when reach the second time
+     * @return
+     * @throws Exception 
+     */
     @Override
     protected String doInBackground() throws Exception {
         while(this.time2!=this.time){

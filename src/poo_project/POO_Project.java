@@ -18,8 +18,9 @@ import java.util.Date;
 import Class.UsersFactory;
 
 /**
- *
- * @author gusta
+ * Main
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
  */
 public class POO_Project {
 
@@ -36,10 +37,7 @@ public class POO_Project {
         Login lg = new Login();
         lg.setVisible(true);
     }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     public static void loadInfo() {
         Administrator admin = Administrator.getSingletonInstance(2018, "1", "Nani");
         Chef chef = (Chef) UsersFactory.getPerson("Chef",123, "1", "Adolfo");

@@ -3,6 +3,11 @@ package Class;
 import javax.swing.JOptionPane;
 import static poo_project.POO_Project.listCategories;
 
+/**
+ * Class for the administrator that is a singleton
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
+ */
 public class Administrator extends Person {
 
     private static Administrator soyUnico;
@@ -111,6 +116,12 @@ public class Administrator extends Person {
         return false;
     }
 
+    /**
+     * Method to verificate if the code of the food is already
+     * created
+     * @param code
+     * @return 
+     */
     public boolean verFood(int code) {
         for (int i = 0; i < listCategories.size(); i++) {
             for (int j = 0; j < listCategories.get(i).getListDish().size(); j++) {
@@ -133,6 +144,17 @@ public class Administrator extends Person {
 
     }
 
+    /**
+     * Method to edit a dish
+     * @param code
+     * @param name
+     * @param description
+     * @param price
+     * @param presentation
+     * @param image
+     * @param ingredients
+     * @param categorie 
+     */
     public void EditDish(int code, String name, String description, int price, String presentation, String image, String ingredients, String categorie) {
         Categories tempC = searchCategorie(categorie);
         Dish tempD = tempC.searchDish(code);
@@ -144,6 +166,16 @@ public class Administrator extends Person {
         tempD.setName(name);
     }
 
+    /**
+     * Method to edit a drink
+     * @param code
+     * @param name
+     * @param description
+     * @param price
+     * @param presentation
+     * @param image
+     * @param categorie 
+     */
     public void EditDrink(int code, String name, String description, int price, String presentation, String image, String categorie) {
         Categories tempC = searchCategorie(categorie);
         Drink tempD = tempC.searchDrink(code);
@@ -154,6 +186,16 @@ public class Administrator extends Person {
         tempD.setName(name);
     }
 
+    /**
+     * Method to edit a ingredient
+     * @param code
+     * @param name
+     * @param description
+     * @param price
+     * @param presentation
+     * @param image
+     * @param categorie 
+     */
     public void EditIngredient(int code, String name, String description, int price, String presentation, String image, String categorie) {
         Categories tempC = searchCategorie(categorie);
         Ingredients tempE = tempC.searchIngredient(code);
@@ -164,6 +206,13 @@ public class Administrator extends Person {
         tempE.setName(name);
     }
 
+    /**
+     * Method singleton
+     * @param id
+     * @param password
+     * @param name
+     * @return 
+     */
     public static Administrator getSingletonInstance(int id, String password, 
             String name) {
         if (soyUnico == null) {

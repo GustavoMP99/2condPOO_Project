@@ -7,14 +7,16 @@ import Class.Order;
 import Class.Seller;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static poo_project.POO_Project.users;
 import static poo_project.POO_Project.listSalesCheck;
 import static poo_project.POO_Project.searchUser;
 
 /**
- *
- * @author Alvarado
+ * Screen for the seller
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
  */
 public class wSeller extends javax.swing.JFrame {
 
@@ -67,7 +69,7 @@ public class wSeller extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         Exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,6 +118,13 @@ public class wSeller extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Aprox Time:");
 
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -126,19 +135,19 @@ public class wSeller extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, 434, Short.MAX_VALUE)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
@@ -168,7 +177,7 @@ public class wSeller extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -222,21 +231,32 @@ public class wSeller extends javax.swing.JFrame {
         Exit();
     }//GEN-LAST:event_ExitActionPerformed
 
+    /**
+     * Pass the order
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String tempC = (String) jComboBox1.getSelectedItem();
         String tempD = (String) jComboBox2.getSelectedItem();
-        String timeAprox= jTextField1.getText();
+        String timeAprox= jFormattedTextField1.getText();
+        if (timeAprox.contains(" ")) {
+            JOptionPane.showMessageDialog(null, "Error with the aprox time");
+            return;
+        }
         String chef[] = tempC.split("/");
         String deliver[] = tempD.split("/");
         tempO.setChef((Chef) searchUser(Integer.parseInt(chef[0])));
         tempO.setDeliver((Deliver) searchUser(Integer.parseInt(deliver[0])));
         tempO.setSeller(seller);
-        //tempO.setDeliveryTime(Double.parseDouble(timeAprox));
-        jTextField1.setText("");
+        tempO.setDeliveryTime(timeAprox);
         tempO.setState("Asignned");
+        tempO.setCookTimer();
         showOrder();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Fill the combo boxes with the employees
+     */
     public void fillEmployees() {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getType() == "Chef") {
@@ -248,6 +268,9 @@ public class wSeller extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Show the order in the jTable
+     */
     public void showOrder() {
         cleanTable();
         ArrayList<Food> food = new ArrayList();
@@ -281,6 +304,7 @@ public class wSeller extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -290,6 +314,5 @@ public class wSeller extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

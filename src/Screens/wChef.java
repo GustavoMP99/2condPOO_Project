@@ -10,8 +10,9 @@ import static poo_project.POO_Project.listSalesCheck;
 import static Screens.Login.chef1;
 
 /**
- *
- * @author Alvarado
+ * Screen for the chef
+ * Date: 18/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
  */
 public class wChef extends javax.swing.JFrame {
 
@@ -21,7 +22,8 @@ public class wChef extends javax.swing.JFrame {
     public wChef(Chef chef) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setIconImage(new ImageIcon(getClass().getResource("/Images/iconTwo.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Images/iconTwo."
+                + "png")).getImage());
         Object[] columnNames = {"ID", "Food/Drink/Ingredient"};
         String data[][] = {};
         model = new DefaultTableModel(data, columnNames);
@@ -164,7 +166,10 @@ public class wChef extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        tempO.setState("Ready");        // TODO add your handling code here:
+        tempO.setState("Ready");
+        tempO.endCookTimer();
+        tempO.setDeliverTimer();
+        showOrder();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -178,12 +183,14 @@ public class wChef extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method to show the firts order of the chef
+     */
     public void showOrder() {
         cleanTable();
         ArrayList<Food> food = new ArrayList();
         for (int i = 0; i < listSalesCheck.size(); i++) {
             jButton1.setEnabled(false);
-            System.out.println(chef1.getName());
             if ("Asignned".equals(listSalesCheck.get(i).getState())) {
                 if (listSalesCheck.get(i).getChef() != null) {
                     if (listSalesCheck

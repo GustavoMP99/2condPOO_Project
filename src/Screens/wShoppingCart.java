@@ -14,8 +14,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author gusta
+ * Screen for the shoppingcart
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
  */
 public class wShoppingCart extends javax.swing.JFrame {
 
@@ -84,7 +85,7 @@ public class wShoppingCart extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Ink Free", 1, 19)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Pay");
+        jButton2.setText("Make the order");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -100,9 +101,9 @@ public class wShoppingCart extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,6 +224,9 @@ public class wShoppingCart extends javax.swing.JFrame {
     }
 
     //Ordered, Asignned, Ready, Delivered
+    /**
+     * Method to make a order
+     */
     public void makeSaleCheck() {
         Order tempO = new Order(listSalesCheck.size(), cus.getName(), price, date(), "Ordered");
         for (int i = 0; i < cus.getShoppingCart().size(); i++) {

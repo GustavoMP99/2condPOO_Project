@@ -1,5 +1,10 @@
 package Class;
 
+/**
+ * Class for the Food
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
+ */
 public abstract class Food {
 
     private int code;
@@ -14,8 +19,17 @@ public abstract class Food {
 
     private String image;
     
-    private Timer timer;
+    private DiscontTimer timer;
 
+    /**
+     * Constructor of food
+     * @param code
+     * @param name
+     * @param description
+     * @param price
+     * @param presentation
+     * @param image 
+     */
     public Food(int code, String name, String description, int price, String presentation, String image) {
         this.code = code;
         this.name = name;
@@ -69,8 +83,12 @@ public abstract class Food {
     public void setImage(String image) {
         this.image = image;
     }
+    /**
+     * Method to initizalize the timer of a discont
+     * @param time 
+     */
     public void setTimer(String time){
-        this.timer=  new Timer("00:00", time);
+        this.timer=  new DiscontTimer("00:00", time);
         timer.execute();
     }
     public abstract String getType();

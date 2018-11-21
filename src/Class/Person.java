@@ -1,5 +1,10 @@
 package Class;
 
+/**
+ * Class of person
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
+ */
 public abstract class Person {
 
     private int id;

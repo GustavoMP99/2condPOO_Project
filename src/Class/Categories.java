@@ -2,6 +2,11 @@ package Class;
 
 import java.util.ArrayList;
 
+/**
+ * Class categorie
+ * Date: 10/11/2018.
+ * @author Gustavo Méndez and Daniela Alvarado.
+ */
 public class Categories {
 
     private ArrayList<Dish> listDish;
@@ -9,6 +14,10 @@ public class Categories {
     private ArrayList<Ingredients> listIngredients;
     private String name;
 
+    /**
+     * Constructor of categorie
+     * @param name 
+     */
     public Categories(String name) {
         this.listDish = new ArrayList<>();
         this.listDrink = new ArrayList<>();
@@ -36,6 +45,11 @@ public class Categories {
         this.name = name;
     }
     
+    /**
+     * Method to search a dish
+     * @param code
+     * @return 
+     */
     public Dish searchDish(int code){
         for (int i = 0; i < listDish.size(); i++) {
             if(listDish.get(i).getCode()==code)
@@ -44,6 +58,11 @@ public class Categories {
         return null;
     }
     
+    /**
+     * Method to search a drink
+     * @param code
+     * @return 
+     */
      public Drink searchDrink(int code){
         for (int i = 0; i < listDrink.size(); i++) {
             if(listDrink.get(i).getCode()==code)
@@ -52,6 +71,11 @@ public class Categories {
         return null;
     }
      
+     /**
+      * Method to search a ingredient
+      * @param code
+      * @return 
+      */
       public Ingredients searchIngredient(int code){
         for (int i = 0; i < listIngredients.size(); i++) {
             if(listIngredients.get(i).getCode()==code)
