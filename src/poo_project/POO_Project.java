@@ -36,22 +36,19 @@ public class POO_Project {
         Login lg = new Login();
         lg.setVisible(true);
     }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     public static void loadInfo() {
         Administrator admin = Administrator.getSingletonInstance(2018, "1", "Nani");
-        Chef chef = (Chef) UsersFactory.getPerson("Chef",123, "1", "Adolfo");
+        Chef chef = (Chef) UsersFactory.getPerson("Chef", 123, "1", "Adolfo");
         System.out.println(chef.getId());
-        Seller seller = (Seller) UsersFactory.getPerson("Seller",321, "1", "Hitler");
-        Customer customer = (Customer) UsersFactory.getPerson("Customer",111, "1", "Gusi");
-        Deliver del = (Deliver) UsersFactory.getPerson("Deliver",777, "1", "Daniela");
+        Seller seller = (Seller) UsersFactory.getPerson("Seller", 321, "1", "Hitler");
+        Customer customer = (Customer) UsersFactory.getPerson("Customer", 111, "1", "Gusi");
+        Deliver del = (Deliver) UsersFactory.getPerson("Deliver", 777, "1", "Daniela");
         admin.addCategories("Chinese Food");
         admin.addDish(0, "Arroz Kun Fu Panda", "Arroz chino", 1000, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\food3.png", "Chinese Food", "Chinese Food");
-                 admin.addDrink(01, "Coca Cola", "Coquita", 700, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\coca.jpg", "Chinese Food");
-         admin.addIngredientExtra(02, "Arroz", "Arrocito", 800, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\arroz.jpg", "Chinese Food");
-        Order tempO = new Order(0, "Gusi", 2000, date(), "Ordered");
+        admin.addDrink(01, "Coca Cola", "Coquita", 700, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\coca.jpg", "Chinese Food");
+        admin.addIngredientExtra(02, "Arroz", "Arrocito", 800, "Mediano", "C:\\Users\\Alvarado\\Desktop\\proyecto\\2condPOO_Project\\src\\Images\\arroz.jpg", "Chinese Food");
+        Order tempO = new Order(0, "Gusi", 2000, dateRN(), "Ordered");
         tempO.getListDish().add((Dish) searchfood(0));
         tempO.getListDish().add((Dish) searchfood(0));
         listSalesCheck.add(tempO);
@@ -75,6 +72,11 @@ public class POO_Project {
         Date date = new Date();
         DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
         return hourdateFormat;
+    }
+     public static String dateRN() {
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+        return hourdateFormat.format(date);
     }
 
     /**
@@ -113,4 +115,11 @@ public class POO_Project {
         return null;
     }
 
+     public static void ApplyDiscount(Food food, float discount) {
+         float tempDis= discount/=100;
+         int price= food.getPrice();
+         int discounts= price-=(tempDis*=price);
+         
+         food.setPrice(discounts);
+     }
 }

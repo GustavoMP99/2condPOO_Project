@@ -1,6 +1,7 @@
 
 package Class;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
 /**
@@ -11,10 +12,12 @@ public class Timer extends SwingWorker<String, String> {
 
     String time;
     String time2;
+    Food food;
 
-    public Timer(String time, String time2) {
+    public Timer(String time, String time2, Food food) {
         this.time = time;
         this.time2 = time2;
+        this.food=food;
     }
     
     @Override
@@ -41,13 +44,13 @@ public class Timer extends SwingWorker<String, String> {
             else{
             this.time=hour+":"+min;
             }
-            System.out.println(time);
-            System.out.println(time2);
             if (time.equals(time2)&&time!=null &&time2!=null) {
                 break;
             }
         }
-        System.out.println("fin");
+        int price= food.getTempPrice();
+        food.setPrice(price);
+        JOptionPane.showMessageDialog(null, "The discount for "+ food.getName()+ " ended");
         return time;
     }
     

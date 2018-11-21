@@ -3,6 +3,7 @@ package Screens;
 import Class.Administrator;
 import Class.Chef;
 import Class.Customer;
+import Class.Deliver;
 import Class.Person;
 import Class.Seller;
 import javax.swing.ImageIcon;
@@ -15,6 +16,7 @@ public class Login extends javax.swing.JFrame {
     public static Customer cus;
     public static Chef chef1;
     public static Administrator admin;
+    public static Deliver del;
 
     /**
      * Creates new form Login
@@ -47,20 +49,24 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         break;
 
-                    case "Seller":
+                    case "Seller":                        
+                        sell=(Seller) userTemp;
                         wSeller wS = new wSeller((Seller) userTemp);
                         wS.setVisible(true);
-                        sell=(Seller) userTemp;
                         this.dispose();
                         break;
 
-                    case "Customer":
+                    case "Customer":                        
+                        cus=(Customer) userTemp;
                         wCustomer wCC = new wCustomer((Customer) userTemp);
                         wCC.setVisible(true);
-                        cus=(Customer) userTemp;
                         this.dispose();
                         break;
                     case "Deliver":
+                        del=(Deliver) userTemp;
+                        wDeliver wD = new wDeliver((Deliver) userTemp);
+                        wD.setVisible(true);
+                        this.dispose();
                         break;
                 }
             }
